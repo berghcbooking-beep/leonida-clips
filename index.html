@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA CLIPS uploader</title>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#5f6368; --line:#e3e3e3; --accent:#c2185b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111214; --fg:#ececec; --muted:#a0a4aa; --line:#2a2c30; --accent:#f06292; } }
+  a { color: var(--accent); }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 30px; margin: 0 0 4px; }
+  h2 { font-size: 20px; margin: 36px 0 8px; }
+  p, li { color: var(--fg); }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  ol li, ul li { margin: 4px 0; }
+  nav a { color: var(--accent); margin-right: 18px; text-decoration: none; }
+  footer { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 16px; color: var(--muted); font-size: 14px; }
+  code { font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="./">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav>
+  <h1>GTA CLIPS uploader</h1>
+  <p class="sub">An internal publishing tool for one YouTube channel: <strong>Leonida Clips</strong>.</p>
+
+  <h2>What it is</h2>
+  <p>GTA CLIPS uploader is a private, single-operator tool. It runs on one computer owned by the channel operator and
+  prepares short commentary videos (YouTube Shorts) about Grand Theft Auto VI live streams. It is not a public service:
+  there are no outside users, no sign-up and no accounts other than the operator's own.</p>
+
+  <h2>What it does</h2>
+  <ol>
+    <li>Finds recent GTA VI stream recordings (VODs) from streamers who allow clipping of their streams.</li>
+    <li>Picks a highlight moment and edits it into a vertical Short with original additions: an on-screen hook,
+        a short narrated introduction giving context, word-by-word captions and a layout with the streamer's camera.</li>
+    <li>Runs an automatic quality check (length, loudness, captions, no blank or frozen frames).</li>
+    <li>Uploads the finished Short to the operator's own channel with the YouTube Data API
+        (<code>videos.insert</code>), <strong>always as private</strong>.</li>
+    <li>The operator reviews every video in YouTube Studio and decides by hand whether to publish or schedule it.</li>
+  </ol>
+
+  <h2>How it uses YouTube API Services</h2>
+  <ul>
+    <li>Only one API method: <code>videos.insert</code>, to upload videos to the operator's own channel.</li>
+    <li>Only one OAuth scope: <code>https://www.googleapis.com/auth/youtube.upload</code>.</li>
+    <li>It does not read, store, analyse or display any YouTube data, and it never accesses other users' accounts or channels.</li>
+    <li>At most 6 uploads per day, well within the default quota.</li>
+  </ul>
+
+  <h2>Credit to streamers</h2>
+  <p>Every video names the streamer on screen and in its description. Only streamers who have publicly
+  invited viewers to clip their streams are used. Any streamer can ask for their content to be removed using the contact below.</p>
+
+  <footer>
+    Contact: <a href="mailto:berghcbooking@gmail.com">berghcbooking@gmail.com</a> ·
+    YouTube channel: <a href="https://www.youtube.com/channel/UCjjhD7I0TfDBPQaKkeZ6jCw">Leonida Clips</a><br>
+    Not affiliated with Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its owners.
+  </footer>
+</main>
+</body>
+</html>
