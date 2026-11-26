@@ -38,16 +38,20 @@
         a short narrated introduction giving context, word-by-word captions and a layout with the streamer's camera.</li>
     <li>Runs an automatic quality check (length, loudness, captions, no blank or frozen frames).</li>
     <li>Uploads the finished Short to the operator's own channel with the YouTube Data API
-        (<code>videos.insert</code>), <strong>always as private</strong>.</li>
-    <li>The operator reviews every video in YouTube Studio and decides by hand whether to publish or schedule it.</li>
+        (<code>videos.insert</code>), <strong>as private with a scheduled publish time</strong>
+        (one video per hour in the evening, Romania time).</li>
+    <li>Until that time the video stays private: the operator can review it in YouTube Studio and change, cancel or
+        delete it before it goes public.</li>
   </ol>
 
   <h2>How it uses YouTube API Services</h2>
   <ul>
-    <li>Only one API method: <code>videos.insert</code>, to upload videos to the operator's own channel.</li>
+    <li>API methods: <code>videos.insert</code>, to upload videos to the operator's own channel, and
+        <code>thumbnails.set</code>, to set the thumbnail of those videos.</li>
     <li>Only one OAuth scope: <code>https://www.googleapis.com/auth/youtube.upload</code>.</li>
     <li>It does not read, store, analyse or display any YouTube data, and it never accesses other users' accounts or channels.</li>
-    <li>At most 6 uploads per day, well within the default quota.</li>
+    <li>Today at most 6 uploads per day (the default quota of 10,000 units). Requested: 12 uploads per day,
+        one per hour between 12:00 and 23:00 Romania time (about 20,000 units per day).</li>
   </ul>
 
   <h2>Credit to streamers</h2>
